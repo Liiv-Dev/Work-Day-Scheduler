@@ -6,9 +6,10 @@ $(document).ready(function() {
   //let tasks = document.querySelector('textarea')
   // Event listener for save button and saves to local storage when clicked
   $('.saveBtn').on('click', () => {
-    const hour = $(this).data('hourNum');
+    const hour = $(this).parent().attr('id');
     const toDo = $(`input`).val();
-    localStorage.setItem('hour',toDo);
+    localStorage.setItem('${hour}',toDo);
+    //alert('Task Saved!')
   })
   //
   // TODO: Add code to apply the past, present, or future class to each time
@@ -26,5 +27,5 @@ $(document).ready(function() {
   //
   // Displays the current date & Time in the header of the page
   let currentTime = dayjs().format('MMM D, YYYY (hh:mm:ss)');
-  $('#currentDay').text(currentTime);
+  $('#currentDay').html(currentTime);
 });
