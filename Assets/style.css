@@ -2,7 +2,6 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   text-align: center;
-  color: #004369;
 }
 
 textarea {
@@ -27,24 +26,24 @@ textarea {
 }
 
 .hour {
-  background-color: #E5DDC8;
-  color: #004369;
+  background-color: #ffffff;
+  color: #000000;
   border-top: 1px dashed #000000;
 }
 
 .past {
-  background-color: red;
-  color: #000000;
+  background-color: #d3d3d3;
+  color: white;
 }
 
 .present {
-  background-color: #fff;
-  color: #000000;
+  background-color: #ff6961;
+  color: white;
 }
 
 .future {
-  background-color: #fff;
-  color: #000000;
+  background-color: #77dd77;
+  color: white;
 }
 
 .saveBtn {
