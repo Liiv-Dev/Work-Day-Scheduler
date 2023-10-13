@@ -5,26 +5,36 @@ $(document).ready(function() {
   let currentTime = dayjs().format('MMM D, YYYY (hh:mm:ss)');
   $('#currentDay').html(currentTime);
 
-  // Event listener for save button and saves to local storage when clicked
-  $('.saveBtn').on('click', () => {
-    const hour = $(this).parent().attr('id');
-    const toDo = $(`input`).val();
-    localStorage.setItem('${hour}',toDo);
-    //alert('Task Saved!')
-  })
-  //
-  // TODO: Add code to apply the past, present, or future class to each time
+    // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
   // attribute of each time-block be used to conditionally add or remove the
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
 
-  
+  function scheduleColorChange () {
+    const currentHour = dayjs().hour()
+    for (let i=9; i<= 17; i++) {
+      if (i < currentHour) {
+        $(`textarea[data-hour="${i}"]`).addClass('past')
+      } else if (i === currentHour) {
+        $(`textarea[data-hour="${i}"]`).addClass('present')
+      } else {
+        $(`textarea[data-hour="${i}"]`).addClass('future')
+      }
+    }
+  }
 
+  // Event listener for save button and saves to local storage when clicked
+  $('.saveBtn').on('click', () => {
+
+    const hour = $(this).parent().attr('id');
+    const toDo = $(`input`).val();
+
+    localStorage.setItem('${hour}',toDo);
+
+    //alert('Task Saved!')
+    alert('Task Saved!')
+  })
   //
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-  //
-  
+
 });
