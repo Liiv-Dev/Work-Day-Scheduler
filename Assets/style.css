@@ -4,6 +4,10 @@ body {
   text-align: center;
 }
 
+header {
+  color: #004369;
+}
+
 textarea {
   background: transparent;
   border: none;

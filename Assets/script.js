@@ -27,7 +27,7 @@ $(document).ready(function() {
   // Event listener for save button and saves to local storage when clicked
   $('.saveBtn').on('click', () => {
 
-    const hour = $(this).parent().attr('id');
+    const hour = $(this).data('hour');
     const toDo = $(`input`).val();
 
     localStorage.setItem('${hour}',toDo);
