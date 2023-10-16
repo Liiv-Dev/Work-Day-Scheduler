@@ -10,14 +10,17 @@ $(document).ready(function() {
     const currentHour = dayjs().hour()
     for (let i=9; i<= 17; i++) {
       if (i < currentHour) {
-        $(`textarea[data-hour="${i}"]`).addClass('past')
+        $(`textarea[data-hour="${i}"]`).addClass('past');
       } else if (i === currentHour) {
-        $(`textarea[data-hour="${i}"]`).addClass('present')
+        $(`textarea[data-hour="${i}"]`).addClass('present');
       } else {
-        $(`textarea[data-hour="${i}"]`).addClass('future')
+        $(`textarea[data-hour="${i}"]`).addClass('future');
       }
     }
   }
+  
+//calls color change function
+scheduleColorChange()
 
   // Event listener for save button and saves to local storage when clicked
   $('.saveBtn').on('click', () => {
