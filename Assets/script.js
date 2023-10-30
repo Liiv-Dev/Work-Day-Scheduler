@@ -6,8 +6,6 @@ $(document).ready(function() {
     const currentDate = dayjs().format('MMM D, YYYY (hh:mm:ss)')
     $('#currentDay').html(currentDate);
   }
-  //Constantly updates time on page
-  setInterval(updateTime, 1000);
 
   //Background colors change based on hour in the day. Past hours, present hours, and future hours.
   function scheduleColorChange () {
@@ -22,14 +20,15 @@ $(document).ready(function() {
       }
     }
   }
-//calls color change function
-scheduleColorChange()
 
-  // Event listener for save button and saves to local storage when clicked
-  //$('.saveBtn').on('click', function() {
-    //const taskData = $('#taskData').val();
-    //const hour = $('.hour').val();
+$(document).on('click', '.saveBtn', function() {
+  const taskData = $(this).siblings('.description').val();
+  const hour = $(this).siblings('.hour').text();
 
-    //localStorage.setItem(`${hour}`, taskData);
-  //})
+  localStorage.setItem(hour, taskData);
+});
+
+  //call functions when page is rendered
+  scheduleColorChange() //calls color change function
+  setInterval(updateTime, 1000);//Constantly updates time on page
 });
