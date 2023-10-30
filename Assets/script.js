@@ -28,7 +28,19 @@ $(document).on('click', '.saveBtn', function() {
   localStorage.setItem(hour, taskData);
 });
 
+// Function to load saved tasks from local storage
+function loadTasks() {
+  $('.description').each(function() {
+      const hour = parseInt($(this).attr('data-hour'));
+      const savedTask = localStorage.getItem(hour);
+      if (savedTask) {
+          $(this).val(savedTask);
+      }
+  });
+}
+
   //call functions when page is rendered
   scheduleColorChange() //calls color change function
   setInterval(updateTime, 1000);//Constantly updates time on page
+  loadTasks(); // Load saved tasks from local storage when the page loads
 });
