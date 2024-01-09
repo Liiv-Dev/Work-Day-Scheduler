@@ -21,26 +21,29 @@ $(document).ready(function() {
     }
   }
 
+// Save tasks to local storage
 $(document).on('click', '.saveBtn', function() {
   const taskData = $(this).siblings('.description').val();
-  const hour = $(this).siblings('.hour').text();
+  const hour = $(this).siblings('.description').attr('data-hour');
 
   localStorage.setItem(hour, taskData);
 });
 
-// Function to load saved tasks from local storage
+// Load saved tasks from local storage
 function loadTasks() {
   $('.description').each(function() {
-      const hour = parseInt($(this).attr('data-hour'));
-      const savedTask = localStorage.getItem(hour);
-      if (savedTask) {
-          $(this).val(savedTask);
-      }
+    const hour = $(this).attr('data-hour');
+    const savedTask = localStorage.getItem(hour);
+    
+    // Check if savedTask is not null
+    if (savedTask) {
+      $(this).val(savedTask);
+    }
   });
 }
 
-  //call functions when page is rendered
-  scheduleColorChange() //calls color change function
-  setInterval(updateTime, 1000);//Constantly updates time on page
-  loadTasks(); // Load saved tasks from local storage when the page loads
+// Call functions when page is rendered
+scheduleColorChange(); // Calls color change function
+setInterval(updateTime, 1000); // Constantly updates time on page
+loadTasks(); // Load saved tasks from local storage when the page loads
 });
